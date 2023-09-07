@@ -4,7 +4,7 @@ using GrpcService.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddGrpc();
+builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddGrpcHealthChecks<StartupService>(o => { o.MapKubernetesHealthCheckProbs(); });
 
 var app = builder.Build();
