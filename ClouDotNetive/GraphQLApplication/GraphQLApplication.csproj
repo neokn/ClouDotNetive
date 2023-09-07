@@ -16,6 +16,19 @@
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+      <Content Remove="overlays\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="overlays\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="overlays\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="overlays\**" />
     </ItemGroup>
     
 </Project>

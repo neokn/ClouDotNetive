@@ -1,0 +1,5 @@
+METADATA_LABEL_APP=dotnet-graphql-application
+METADATA_NAME=dotnet-gql
+CONTAINER_NAME=dotnet-gql
+ASPNETCORE_ENVIRONMENT=Development
+INGRESS_HOST=dotnet-gql.k3s.svc.cluster.local

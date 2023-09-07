@@ -8,17 +8,37 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Protobuf Include="Protos\greet.proto" GrpcServices="Server"/>
+        <Protobuf Include="..\Protos\greet.proto" GrpcServices="Server"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Grpc.AspNetCore" Version="2.52.0"/>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
+        <PackageReference Include="Grpc.AspNetCore.HealthChecks" Version="2.57.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+      <Content Remove="overlays\**" />
+      <Content Include="..\Protos\google\api\annotations.proto">
+        <Link>Protos\google\api\annotations.proto</Link>
+      </Content>
+      <Content Include="..\Protos\google\api\http.proto">
+        <Link>Protos\google\api\http.proto</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="overlays\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="overlays\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="overlays\**" />
     </ItemGroup>
 
 </Project>

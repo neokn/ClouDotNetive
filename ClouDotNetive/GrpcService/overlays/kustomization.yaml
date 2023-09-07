@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: Deployment
+      name: \${METADATA_NAME}
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/startupProbe
+        value: 
+          grpc:
+            service: greet.Greeter
+            port: 8080
+      - op: add
+        path: /spec/template/spec/containers/0/readinessProbe
+        value:
+          grpc:
+            service: greet.Greeter
+            port: 8080
+      - op: add
+        path: /spec/template/spec/containers/0/livenessProbe
+        value:
+          grpc:
+            port: 8080

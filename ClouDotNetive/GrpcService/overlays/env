@@ -1,0 +1,5 @@
+METADATA_LABEL_APP=dotnet-grpc-service
+METADATA_NAME=dotnet-grpc
+CONTAINER_NAME=dotnet-grpc
+ASPNETCORE_ENVIRONMENT=Development
+INGRESS_HOST=dotnet-grpc.k3s.svc.cluster.local

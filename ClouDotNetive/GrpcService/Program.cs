@@ -1,13 +1,16 @@
+using GrpcService.HealthCheck;
 using GrpcService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddGrpcHealthChecks<StartupService>(o => { o.MapKubernetesHealthCheckProbs(); });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.MapGrpcHealthChecksService().RequireHost(Environment.GetEnvironmentVariable("POD_IP") ?? "localhost");
 app.MapGrpcService<GreeterService>();
 app.MapGet("/",
     () =>
