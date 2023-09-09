@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "Greet";
+import "google/api/annotations.proto";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc CreatePerson (CreatePersonInput) returns (Person) {
+    option (google.api.http) = {
+      post: "/persons"
+    };
+  }
+}
+
+// The request message containing the user's name.
+message CreatePersonInput {
+  string name = 1;
+  Address mainAddress = 2;
+  repeated Address addresses = 3;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+}
+
+message Person {
+  string id = 1;
+}

@@ -1,0 +1,3 @@
+METADATA_LABEL_APP=azure-sql-edge
+METADATA_NAME=mssql
+CONTAINER_NAME=mssql

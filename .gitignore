@@ -398,5 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 .DS_Store
-
-ClouDotNetive/.idea/.idea.ClouDotNetive/.idea/
+LocalSetup/**/data/
+.idea/
+GrpcService/Migrations/

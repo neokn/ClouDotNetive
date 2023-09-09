@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ${METADATA_NAME}
+spec:
+  selector:
+    matchLabels:
+      app: PATCH_BY_KUSTOMIZE
+  serviceName: ${METADATA_NAME}
+  updateStrategy:
+    type: OnDelete
+  template:
+    spec:
+      containers:
+        - name: ${CONTAINER_NAME}
+          image: ${IMAGE_NAME}:${IMAGE_TAG}
+          imagePullPolicy: IfNotPresent

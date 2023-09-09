@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLApplication", "GraphQLApplication\GraphQLApplication.csproj", "{DA64E7AB-3F2C-415F-AF73-32648BB050B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{F7BE7587-6099-43AD-B384-A52D2F4CBA1E}"
+	ProjectSection(SolutionItems) = preProject
+		base\ingress.yaml = base\ingress.yaml
+		base\kustomization.yaml = base\kustomization.yaml
+		base\service.yaml = base\service.yaml
+		base\deployment.yaml = base\deployment.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalSetup", "LocalSetup", "{C3FDDC51-55A0-4FDA-8BFA-E4A0E017AC57}"
+	ProjectSection(SolutionItems) = preProject
+		localSetup\deploy_grpc.sh = localSetup\deploy_grpc.sh
+		localSetup\deploy_gql.sh = localSetup\deploy_gql.sh
+		localSetup\deploy.sh = localSetup\deploy.sh
+		LocalSetup\deploy_mssql.sh = LocalSetup\deploy_mssql.sh
+		LocalSetup\deploy_mongodb.sh = LocalSetup\deploy_mongodb.sh
+		LocalSetup\build_grpc.sh = LocalSetup\build_grpc.sh
+		LocalSetup\build_gql.sh = LocalSetup\build_gql.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyServices", "DependencyServices", "{15F075E5-B455-43E3-A132-DDFDE0C56304}"
+	ProjectSection(SolutionItems) = preProject
+		LocalSetup\Database\base\deployment.yaml = LocalSetup\Database\base\deployment.yaml
+		LocalSetup\Database\base\kustomization.yaml = LocalSetup\Database\base\kustomization.yaml
+		LocalSetup\Database\base\service.yaml = LocalSetup\Database\base\service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoDb", "MongoDb", "{8633F085-58E1-460B-BEEB-058D6B0151AC}"
+	ProjectSection(SolutionItems) = preProject
+		LocalSetup\Database\mongodb\overlays\env = LocalSetup\Database\mongodb\overlays\env
+		LocalSetup\Database\mongodb\overlays\kustomization.yaml = LocalSetup\Database\mongodb\overlays\kustomization.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MsSql", "MsSql", "{6D622E1C-31C1-4725-9DCB-A263E8F2157F}"
+	ProjectSection(SolutionItems) = preProject
+		LocalSetup\Database\mssql\overlays\env = LocalSetup\Database\mssql\overlays\env
+		LocalSetup\Database\mssql\overlays\kustomization.yaml = LocalSetup\Database\mssql\overlays\kustomization.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grpc", "Grpc", "{5E545DA8-1B64-4108-853E-0040FD8D1118}"
+	ProjectSection(SolutionItems) = preProject
+		GrpcService\overlays\env = GrpcService\overlays\env
+		GrpcService\overlays\kustomization.yaml = GrpcService\overlays\kustomization.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphQL", "GraphQL", "{31DE4D10-75EE-4346-8CF5-656ABE4F9DA2}"
+	ProjectSection(SolutionItems) = preProject
+		GraphQLApplication\overlays\env = GraphQLApplication\overlays\env
+		GraphQLApplication\overlays\kustomization.yaml = GraphQLApplication\overlays\kustomization.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA64E7AB-3F2C-415F-AF73-32648BB050B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA64E7AB-3F2C-415F-AF73-32648BB050B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA64E7AB-3F2C-415F-AF73-32648BB050B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA64E7AB-3F2C-415F-AF73-32648BB050B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15F075E5-B455-43E3-A132-DDFDE0C56304} = {C3FDDC51-55A0-4FDA-8BFA-E4A0E017AC57}
+		{8633F085-58E1-460B-BEEB-058D6B0151AC} = {15F075E5-B455-43E3-A132-DDFDE0C56304}
+		{6D622E1C-31C1-4725-9DCB-A263E8F2157F} = {15F075E5-B455-43E3-A132-DDFDE0C56304}
+		{5E545DA8-1B64-4108-853E-0040FD8D1118} = {C3FDDC51-55A0-4FDA-8BFA-E4A0E017AC57}
+		{31DE4D10-75EE-4346-8CF5-656ABE4F9DA2} = {C3FDDC51-55A0-4FDA-8BFA-E4A0E017AC57}
+	EndGlobalSection
+EndGlobal

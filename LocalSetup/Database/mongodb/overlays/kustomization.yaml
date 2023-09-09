@@ -1,0 +1,47 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: StatefulSet
+      name: \${METADATA_NAME}
+    patch: |-
+      - op: add
+        path: /spec/template/spec/volumes
+        value:
+          - name: mongodb-persistent-storage
+            hostPath:
+              path: ${PWD}/localSetup/database/mongodb/data
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts
+        value:
+          - name: mongodb-persistent-storage
+            mountPath: /data/db
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: "root"
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: "example"
+          - name: MONGO_INITDB_DATABASE
+            value: "test"
+      - op: add
+        path: /spec/template/spec/containers/0/ports
+        value:
+          - containerPort: 27017
+  - target:
+      kind: Service
+      name: \${METADATA_NAME}
+    patch: |-
+      - op: add
+        path: /spec/ports
+        value:
+          - name: mongodb
+            port: 32701
+            targetPort: 27017
+            nodePort: 32701
+            
