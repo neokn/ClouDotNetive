@@ -12,11 +12,7 @@ spec:
         - name: ${CONTAINER_NAME}
           image: ${IMAGE_NAME}:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
           env:
-            - name: ASPNETCORE_URLS
-              value: "http://*:8080"
             - name: ASPNETCORE_ENVIRONMENT
               value: ${ASPNETCORE_ENVIRONMENT}
             - name: POD_IP

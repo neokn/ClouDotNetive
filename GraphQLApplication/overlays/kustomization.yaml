@@ -26,3 +26,12 @@ patches:
           httpGet:
             path: /healthz/live
             port: 8080
+      - op: add
+        path: /spec/template/spec/containers/0/ports
+        value:
+          - containerPort: 8080
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: ASPNETCORE_URLS
+          value: "http://*:8080"
