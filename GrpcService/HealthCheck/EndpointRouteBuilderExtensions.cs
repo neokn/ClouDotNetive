@@ -10,9 +10,4 @@ internal static class EndpointRouteBuilderExtensions
             context => context.Tags.Contains("startup") || context.Tags.Contains("ready"));
         options.Services.Map(string.Empty, context => context.Tags.Contains("live"));
     }
-
-    public static void RequireHost(this IEnumerable<IEndpointConventionBuilder> builders, string host)
-    {
-        foreach (var endpointConventionBuilder in builders) endpointConventionBuilder.RequireHost(host);
-    }
 }

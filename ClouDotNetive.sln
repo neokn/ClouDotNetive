@@ -4,14 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLApplication", "Graph
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{FBA1A6AE-E7EE-4B3C-994A-EB5885055C0F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{F7BE7587-6099-43AD-B384-A52D2F4CBA1E}"
-	ProjectSection(SolutionItems) = preProject
-		base\ingress.yaml = base\ingress.yaml
-		base\kustomization.yaml = base\kustomization.yaml
-		base\service.yaml = base\service.yaml
-		base\deployment.yaml = base\deployment.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalSetup", "LocalSetup", "{C3FDDC51-55A0-4FDA-8BFA-E4A0E017AC57}"
 	ProjectSection(SolutionItems) = preProject
 		localSetup\deploy_grpc.sh = localSetup\deploy_grpc.sh
@@ -21,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalSetup", "LocalSetup", 
 		LocalSetup\deploy_mongodb.sh = LocalSetup\deploy_mongodb.sh
 		LocalSetup\build_grpc.sh = LocalSetup\build_grpc.sh
 		LocalSetup\build_gql.sh = LocalSetup\build_gql.sh
+		base\deployment.yaml = base\deployment.yaml
+		base\ingress.yaml = base\ingress.yaml
+		base\kustomization.yaml = base\kustomization.yaml
+		base\service.yaml = base\service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyServices", "DependencyServices", "{15F075E5-B455-43E3-A132-DDFDE0C56304}"

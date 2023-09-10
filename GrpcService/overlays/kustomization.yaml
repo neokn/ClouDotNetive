@@ -13,24 +13,20 @@ patches:
         value:
           grpc:
             service: greet.Greeter
-            port: 5001
+            port: 8080
       - op: add
         path: /spec/template/spec/containers/0/readinessProbe
         value:
           grpc:
             service: greet.Greeter
-            port: 5001
+            port: 8080
       - op: add
         path: /spec/template/spec/containers/0/livenessProbe
         value:
           grpc:
-            port: 5001
+            port: 8080
       - op: add
         path: /spec/template/spec/containers/0/ports
         value:
-          - containerPort: 5001
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: ASPNETCORE_URLS
-          value: "http://*:5001"
+          - containerPort: 8080
+          - containerPort: 8443
