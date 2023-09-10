@@ -1,3 +1,4 @@
+using System.Security.Authentication;
 using GrpcService.HealthCheck;
 using GrpcService.Models;
 using GrpcService.Services;
@@ -6,7 +7,12 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Events;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var http2 = options.Limits.Http2;
+    http2.InitialConnectionWindowSize = 1024 * 1024; // Bytes
+    http2.InitialStreamWindowSize = 768 * 1024; // Bytes
+});
 // Add services to the container.
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddGrpcHealthChecks<StartupService>(o => { o.MapKubernetesHealthCheckProbs(); });

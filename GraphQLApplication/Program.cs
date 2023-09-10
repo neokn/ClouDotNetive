@@ -1,3 +1,4 @@
+using System.Net.Security;
 using GraphQLApplication.HealthCheck;
 using GraphQLApplication.Types;
 using Greet;
@@ -23,7 +24,23 @@ builder.Services
         var database = client.GetDatabase("test");
         return database.GetCollection<Person>("person");
     });
-builder.Services.AddGrpcClient<Greeter.GreeterClient>(o => { o.Address = new Uri("http://localhost:5001"); });
+builder.Services.AddGrpcClient<Greeter.GreeterClient>(o =>
+{
+    o.Address = new Uri("https://dotnet-grpc.k3s.svc.cluster.local");
+}).ConfigureChannel((sp, options) =>
+{
+    options.HttpHandler = new SocketsHttpHandler()
+    {
+        PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan,
+        KeepAlivePingDelay = TimeSpan.FromSeconds(60),
+        KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
+        EnableMultipleHttp2Connections = true,
+        SslOptions = new SslClientAuthenticationOptions()
+        {
+            RemoteCertificateValidationCallback = (_, _, _, _) => true,
+        }
+    };
+});
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
